@@ -1,0 +1,264 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:before, :after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+}
+
+.back {
+  position: relative;
+  top: 100px;
+}
+
+.physical {
+  width: 200px;
+  height: 200px;
+  background: #eda8b6;
+  border: 3px solid #782838;
+  border-radius: 50%;
+  margin-left: -100px;
+  position: absolute;
+  left: 50%;
+}
+
+.eyes {
+  width: 100px;
+  height: 100px;
+  transform-origin: center;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: -54px;
+  display: flex;
+  position: relative;
+  top: 14px;
+  left: 50%;
+  transform: rotate(-10deg);
+}
+
+.eyes .eye-left, .eyes .eye-right {
+  width: 50px;
+  height: 25px;
+  transform-origin: center;
+  background-color: #782838;
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  transform: rotate(90deg);
+}
+
+.eyes .eye-left .pupil1 {
+  width: 20px;
+  height: 14px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: relative;
+  left: 5px;
+}
+
+.eyes .eye-left .blue1 {
+  width: 14px;
+  height: 14px;
+  background-color: #6e9dea;
+  border-radius: 50%;
+  position: relative;
+  left: 12px;
+}
+
+.eyes .eye-right .pupil2 {
+  width: 20px;
+  height: 14px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: relative;
+  left: 5px;
+}
+
+.eyes .eye-right .blue2 {
+  width: 14px;
+  height: 14px;
+  background-color: #6e9dea;
+  border-radius: 50%;
+  position: relative;
+  left: 12px;
+}
+
+.physical .pink1 {
+  width: 14px;
+  height: 14px;
+  background-color: #782838;
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  left: 18px;
+}
+
+.physical .pink2 {
+  width: 14px;
+  height: 14px;
+  background-color: #782838;
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  left: 68px;
+}
+
+.faces {
+  height: 50px;
+  width: 124px;
+  transform-origin: center;
+  justify-content: space-between;
+  margin-top: -18px;
+  margin-left: -62px;
+  display: flex;
+  position: relative;
+  left: 50%;
+  transform: rotate(-10deg);
+}
+
+.faces .face1, .faces .face2 {
+  width: 24px;
+  height: 14px;
+  transform-origin: center;
+  background-color: #ea6e7e;
+  border-radius: 50%;
+  transform: rotate(0deg);
+}
+
+.back .left-arm {
+  width: 100px;
+  height: 86px;
+  z-index: -1;
+  background-color: #eda8b6;
+  border: 3px solid #782838;
+  border-radius: 50%;
+  margin-left: -140px;
+  position: absolute;
+  top: 80px;
+  left: 50%;
+}
+
+.back .right-arm {
+  width: 100px;
+  height: 86px;
+  z-index: -1;
+  background-color: #eda8b6;
+  border: 3px solid #782838;
+  border-radius: 50%;
+  margin-left: 10px;
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: rotate(90deg);
+}
+
+.back .left-foot {
+  width: 120px;
+  height: 86px;
+  background-color: #dd4545;
+  border: 3px solid #782838;
+  border-radius: 50%;
+  margin-left: -120px;
+  position: absolute;
+  top: 126px;
+  left: 50%;
+  transform: rotate(45deg);
+}
+
+.back .right-foot {
+  width: 120px;
+  height: 86px;
+  z-index: -1;
+  background-color: #dd4545;
+  border: 3px solid #782838;
+  border-radius: 50%;
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: rotate(70deg);
+}
+
+.back .hidden1 {
+  width: 70px;
+  height: 40px;
+  transform-origin: center;
+  background-color: #eda8b6;
+  border: 1px solid #eda8b6;
+  border-radius: 50%;
+  margin-left: 12px;
+  position: relative;
+  top: 4px;
+  left: 50%;
+  transform: rotate(30deg);
+}
+
+.back .hidden2 {
+  width: 20px;
+  height: 30px;
+  transform-origin: end;
+  background-color: #eda8b6;
+  border: 1px solid #eda8b6;
+  border-radius: 50%;
+  margin-left: -110px;
+  position: relative;
+  top: 52px;
+  left: 50%;
+  transform: rotate(-10deg);
+}
+
+.back .mouth {
+  width: 60px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: -26px;
+  position: relative;
+  top: -30px;
+  left: 50%;
+  overflow: hidden;
+  transform: rotate(-10deg);
+}
+
+.back .mouth .mouth1 {
+  width: 40px;
+  height: 60px;
+  z-index: 2;
+  border: 3px solid #782838;
+  border-radius: 50%;
+  margin-left: -20px;
+  position: relative;
+  top: -35px;
+  left: 50%;
+  overflow: hidden;
+}
+
+.back .mouth .mouth1 .mouth2 {
+  width: 200px;
+  height: 200px;
+  background-color: #782838;
+  border: 3px solid #782838;
+  border-radius: 50%;
+  margin-left: -100px;
+  position: absolute;
+  top: 33px;
+  left: 50%;
+}
+
+.back .mouth .mouth1 .tongue {
+  width: 20px;
+  height: 14px;
+  z-index: 1;
+  background-color: #dd4545;
+  border-radius: 50%;
+  margin-left: -10px;
+  position: relative;
+  bottom: -40px;
+  left: 50%;
+}
+
+/*# sourceMappingURL=index.ec967893.css.map */
