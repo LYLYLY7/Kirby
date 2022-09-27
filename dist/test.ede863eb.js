@@ -1,3 +1,4 @@
+const string = `
 * {
   box-sizing: border-box;
   margin: 0;
@@ -256,3 +257,56 @@
   background-color: #dd4545;
   z-index: 1;
 }
+`;
+let n = 1;
+// substring 子字符串（起始，末尾）
+demo.innerHTML = string.substring(0, n);
+demo2.innerText = string.substring(0, n);
+console.log(n);
+let run = ()=>{
+    n += 1;
+    if (n > string.length) {
+        // 清除setInterval
+        window.clearInterval(id);
+        // 如果符合条件，就不执行下面两个语句
+        return;
+    }
+    console.log(n + ":" + string.substring(0, n));
+    demo.innerHTML = string.substring(0, n);
+    demo2.innerText = string.substring(0, n);
+    demo2.scrollTop = demo2.scrollHeight;
+};
+let time = 0;
+const play = ()=>{
+    setInterval(()=>{
+        run();
+    }, time);
+};
+const pause = ()=>{
+    window.clearInterval(id);
+};
+let id = play();
+btnPause.onclick = ()=>{
+    pause();
+};
+btnPlay.onclick = ()=>{
+    id = play();
+};
+btnSlow.onclick = ()=>{
+    pause();
+    time = 500;
+    // run是一个函数，run()则是run的返回值
+    id = setInterval(run, time);
+};
+btnNormal.onclick = ()=>{
+    pause();
+    time = 100;
+    id = setInterval(run, time);
+};
+btnFast.onclick = ()=>{
+    pause();
+    time = 0;
+    id = setInterval(run, time);
+};
+
+//# sourceMappingURL=test.ede863eb.js.map

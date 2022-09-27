@@ -8,16 +8,14 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #fff;
-}
-
 .back {
+  z-index: -1;
+  min-height: 50vh;
   position: relative;
   top: 100px;
 }
 
-.physical {
+.back .physical {
   width: 200px;
   height: 200px;
   background: #eda8b6;
