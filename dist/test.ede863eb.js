@@ -259,61 +259,68 @@ const string = `
 }
 `;
 // substring 子字符串（起始，末尾）
-const demo = document.querySelector("#demo");
-const demo2 = document.querySelector("#demo2");
-let n = 1;
-let time = 0;
-let id;
 const player = {
+    id: undefined,
+    time: 0,
+    n: 1,
+    ui: {
+        demo: document.querySelector("#demo"),
+        demo2: document.querySelector("#demo2")
+    },
     init: ()=>{
-        demo.innerHTML = string.substring(0, n);
-        demo2.innerText = string.substring(0, n);
+        player.ui.demo.innerHTML = string.substring(0, player.n);
+        player.ui.demo2.innerText = string.substring(0, player.n);
         player.play();
+        player.bindEvents();
+    },
+    events: {
+        "#btnPause": "pause",
+        "#btnPlay": "play",
+        "#btnSlow": "slow",
+        "#btnNormal": "normal",
+        "#btnFast": "fast"
+    },
+    bindEvents: ()=>{
+        for(let key in player.events)//判断events只有自身属性
+        if (player.events.hasOwnProperty(key)) {
+            // key 本身也是字符串
+            const value = player.events[key] // value的值为 pause play 字符串
+            ;
+            document.querySelector(key).onclick = player[value];
+        }
     },
     run: ()=>{
-        n += 1;
-        if (n > string.length) {
-            window.clearInterval(id);
+        player.n += 1;
+        if (player.n > string.length) {
+            window.clearInterval(player.id);
             return;
         }
-        demo.innerText = string.substring(0, n);
-        demo2.innerHTML = string.substring(0, n);
-        demo.scrollTop = demo.scrollHeight;
+        player.ui.demo.innerText = string.substring(0, player.n);
+        player.ui.demo2.innerHTML = string.substring(0, player.n);
+        player.ui.demo.scrollTop = player.ui.demo.scrollHeight;
     },
     play: ()=>{
-        id = setInterval(player.run, time);
+        player.id = setInterval(player.run, player.time);
     },
     pause: ()=>{
-        window.clearInterval(id);
+        window.clearInterval(player.id);
     },
     slow: ()=>{
         player.pause();
-        time = 300;
+        player.time = 300;
         player.play();
     },
     normal: ()=>{
         player.pause();
-        time = 100;
+        player.time = 100;
         player.play();
     },
     fast: ()=>{
         player.pause();
-        time = 0;
+        player.time = 0;
         player.play();
     }
 };
 player.init();
-// let id =setInterval(run,time)
-const btnPause = document.querySelector("#btnPause");
-const btnPlay = document.querySelector("#btnPlay");
-const btnSlow = document.querySelector("#btnSlow");
-const btnNormal = document.querySelector("#btnNormal");
-const btnFast = document.querySelector("#btnFast");
-// ()=>{fn()} 等价于 fn
-btnPause.onclick = player.pause;
-btnPlay.onclick = player.play;
-btnSlow.onclick = player.slow;
-btnNormal.onclick = player.normal;
-btnFast.onclick = player.fast;
 
 //# sourceMappingURL=test.ede863eb.js.map
