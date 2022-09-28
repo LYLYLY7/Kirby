@@ -277,32 +277,34 @@ const run = () => {
     demo2.innerHTML = string.substring(0, n)
     demo.scrollTop = demo.scrollHeight
 }
-
-
-let id = setInterval(() => {
-    run()
-}, time)
+const play = () => {
+    return setInterval(run, time)
+}
+const pause = () => {
+    window.clearInterval(id)
+}
+let id = play()
 //上述代码可以改写为
 // let id =setInterval(run,time)
 // ()=>{fn()} 等价于 fn()
 btnPause.onclick = () => {
-    window.clearInterval(id)
+    pause()
 }
 btnPlay.onclick = () => {
-    id = setInterval(run,time)
+    id = play()
 }
-btnSlow.onclick=()=>{
-    window.clearInterval(id)
-    time=300
-    id= setInterval(run,time)
+btnSlow.onclick = () => {
+    pause()
+    time = 300
+    id = play()
 }
-btnNormal.onclick=()=>{
-    window.clearInterval(id)
-    time=100
-    id= setInterval(run,time)
+btnNormal.onclick = () => {
+    pause()
+    time = 100
+    id = play()
 }
-btnFast.onclick=()=>{
-    window.clearInterval(id)
-    time=0
-    id= setInterval(run,time)
+btnFast.onclick = () => {
+    pause()
+    time = 0
+    id = play()
 }
