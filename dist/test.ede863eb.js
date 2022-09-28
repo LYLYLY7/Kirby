@@ -259,13 +259,17 @@ const string = `
 }
 `;
 // substring 子字符串（起始，末尾）
-let n = 1;
 const demo = document.querySelector("#demo");
 const demo2 = document.querySelector("#demo2");
-demo.innerHTML = string.substring(0, n);
-demo2.innerText = string.substring(0, n);
+let n = 1;
 let time = 0;
+let id;
 const player = {
+    init: ()=>{
+        demo.innerHTML = string.substring(0, n);
+        demo2.innerText = string.substring(0, n);
+        player.play();
+    },
     run: ()=>{
         n += 1;
         if (n > string.length) {
@@ -277,7 +281,7 @@ const player = {
         demo.scrollTop = demo.scrollHeight;
     },
     play: ()=>{
-        return setInterval(player.run, time);
+        id = setInterval(player.run, time);
     },
     pause: ()=>{
         window.clearInterval(id);
@@ -285,21 +289,20 @@ const player = {
     slow: ()=>{
         player.pause();
         time = 300;
-        id = player.play();
+        player.play();
     },
     normal: ()=>{
         player.pause();
         time = 100;
-        id = player.play();
+        player.play();
     },
     fast: ()=>{
         player.pause();
         time = 0;
-        id = player.play();
+        player.play();
     }
 };
-let id = player.play();
-//上述代码可以改写为
+player.init();
 // let id =setInterval(run,time)
 const btnPause = document.querySelector("#btnPause");
 const btnPlay = document.querySelector("#btnPlay");
@@ -307,12 +310,8 @@ const btnSlow = document.querySelector("#btnSlow");
 const btnNormal = document.querySelector("#btnNormal");
 const btnFast = document.querySelector("#btnFast");
 // ()=>{fn()} 等价于 fn
-btnPause.onclick = ()=>{
-    player.pause();
-};
-btnPlay.onclick = ()=>{
-    id = player.play();
-};
+btnPause.onclick = player.pause;
+btnPlay.onclick = player.play;
 btnSlow.onclick = player.slow;
 btnNormal.onclick = player.normal;
 btnFast.onclick = player.fast;
