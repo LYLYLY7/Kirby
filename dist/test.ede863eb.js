@@ -258,56 +258,63 @@ const string = `
   z-index: 1;
 }
 `;
-let n = 1;
 // substring 子字符串（起始，末尾）
+let n = 1;
+const demo = document.querySelector("#demo");
+const demo2 = document.querySelector("#demo2");
 demo.innerHTML = string.substring(0, n);
 demo2.innerText = string.substring(0, n);
-console.log(n);
 let time = 0;
-const run = ()=>{
-    n += 1;
-    if (n > string.length) {
+const player = {
+    run: ()=>{
+        n += 1;
+        if (n > string.length) {
+            window.clearInterval(id);
+            return;
+        }
+        demo.innerText = string.substring(0, n);
+        demo2.innerHTML = string.substring(0, n);
+        demo.scrollTop = demo.scrollHeight;
+    },
+    play: ()=>{
+        return setInterval(player.run, time);
+    },
+    pause: ()=>{
         window.clearInterval(id);
-        return;
+    },
+    slow: ()=>{
+        player.pause();
+        time = 300;
+        id = player.play();
+    },
+    normal: ()=>{
+        player.pause();
+        time = 100;
+        id = player.play();
+    },
+    fast: ()=>{
+        player.pause();
+        time = 0;
+        id = player.play();
     }
-    console.log(n + ":" + string.substring(0, n));
-    demo.innerText = string.substring(0, n);
-    demo2.innerHTML = string.substring(0, n);
-    demo.scrollTop = demo.scrollHeight;
 };
-const play = ()=>{
-    return setInterval(run, time);
-};
-const pause = ()=>{
-    window.clearInterval(id);
-};
-const slow = ()=>{
-    pause();
-    time = 300;
-    id = play();
-};
-const normal = ()=>{
-    pause();
-    time = 100;
-    id = play();
-};
-const fast = ()=>{
-    pause();
-    time = 0;
-    id = play();
-};
-let id = play();
+let id = player.play();
 //上述代码可以改写为
 // let id =setInterval(run,time)
+const btnPause = document.querySelector("#btnPause");
+const btnPlay = document.querySelector("#btnPlay");
+const btnSlow = document.querySelector("#btnSlow");
+const btnNormal = document.querySelector("#btnNormal");
+const btnFast = document.querySelector("#btnFast");
 // ()=>{fn()} 等价于 fn
 btnPause.onclick = ()=>{
-    pause();
+    player.pause();
 };
 btnPlay.onclick = ()=>{
-    id = play();
+    id = player.play();
 };
-btnSlow.onclick = slow;
-btnNormal.onclick = normal;
-btnFast.onclick = fast;
+btnSlow.onclick = player.slow;
+btnNormal.onclick = player.normal;
+btnFast.onclick = player.fast;
 
 //# sourceMappingURL=test.ede863eb.js.map
